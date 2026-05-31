@@ -3,23 +3,18 @@
 
 <html lang="es-ES" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
 <head>
-<link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.ico">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-
-<meta charset="utf-8">
+<meta charset="utf-8"/>
 <title>ArtBook — Noa Aguilera</title>
-<meta content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" http-equiv="Accept-CH">
-
-<meta content="ArtBook — Noa Aguilera" itemprop="name"/>
-<meta content="https://bynoa.squarespace.com/artbook" itemprop="url"/>
-
+<meta content="Sec-CH-UA-Platform-Version, Sec-CH-UA-Model" http-equiv="Accept-CH"/>
+<meta content="ArtBook — Noa Aguilera" itemprop="name">
+<meta content="https://bynoa.squarespace.com/artbook" itemprop="url">
 <meta content="" name="description"/>
 <link href="https://images.squarespace-cdn.com" rel="preconnect"/>
-
-<link href="https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/98e2e8f9-67d5-4d6c-a400-ee02c06b1b00_617/website.components.html.styles.css" rel="stylesheet" type="text/css"><link href="https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.imageFluid/8c55e9a8-929d-410b-b18c-901d825cb633_604/website.components.imageFluid.styles.css" rel="stylesheet" type="text/css"><link href="https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/4df0bd5e-8e61-410a-a35e-685b3b5718b0_787/website.components.button.styles.css" rel="stylesheet" type="text/css"/>
-
-</link></link></meta></meta><style id="github-pages-fix">
+<link href="https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/98e2e8f9-67d5-4d6c-a400-ee02c06b1b00_617/website.components.html.styles.css" rel="stylesheet" type="text/css"/><link href="https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.imageFluid/8c55e9a8-929d-410b-b18c-901d825cb633_604/website.components.imageFluid.styles.css" rel="stylesheet" type="text/css"/><link href="https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.button/4df0bd5e-8e61-410a-a35e-685b3b5718b0_787/website.components.button.styles.css" rel="stylesheet" type="text/css">
+</link></meta></meta><style id="github-pages-fix">
 :root {
   --white-hsl: 0, 0%, 100%;
   --black-hsl: 0, 0%, 0%;
@@ -34,10 +29,72 @@ header#header {
 }
 #site-title { text-decoration: none; color: inherit; }
 main#page { padding-top: 60px; }
+
+/* ── CAROUSEL FIX ── */
+.gallery-reel {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.gallery-reel:active { cursor: grabbing; }
+.gallery-reel-wrapper {
+  height: 100%;
+}
+.gallery-reel-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 8px;
+  height: 100%;
+  padding: 0 4vw;
+}
+.gallery-reel-item {
+  flex: 0 0 auto;
+  height: 100%;
+  width: auto;
+}
+.gallery-reel-item-wrapper {
+  height: 100%;
+  width: auto;
+}
+.gallery-reel-item-src {
+  height: 100%;
+  width: auto;
+  aspect-ratio: auto;
+}
+.gallery-reel-item-src img {
+  height: 100% !important;
+  width: auto !important;
+  max-width: none !important;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* ── FONTS ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
+body, .sqs-html-content, .header-nav-list a, #site-title {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── FADE-IN ANIMATION ── */
+@keyframes noa-fade-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-section {
+  animation: noa-fade-in 0.9s ease both;
+}
+.page-section:nth-child(1) { animation-delay: 0s; }
+.page-section:nth-child(2) { animation-delay: 0.15s; }
+.page-section:nth-child(3) { animation-delay: 0.25s; }
+.page-section:nth-child(4) { animation-delay: 0.35s; }
+.page-section:nth-child(5) { animation-delay: 0.45s; }
 </style></head>
 <body class="tweak-blog-alternating-side-by-side-width-full tweak-blog-alternating-side-by-side-image-aspect-ratio-11-square tweak-blog-alternating-side-by-side-text-alignment-left tweak-blog-alternating-side-by-side-read-more-style-show tweak-blog-alternating-side-by-side-image-text-alignment-middle tweak-blog-alternating-side-by-side-delimiter-bullet tweak-blog-alternating-side-by-side-meta-position-top tweak-blog-alternating-side-by-side-primary-meta-categories tweak-blog-alternating-side-by-side-secondary-meta-date tweak-blog-alternating-side-by-side-excerpt-show image-block-poster-text-alignment-center image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-content-position-center image-block-collage-text-alignment-left image-block-stack-text-alignment-left form-field-style-solid form-field-shape-square form-field-border-all form-field-checkbox-type-icon form-field-checkbox-fill-solid form-field-checkbox-color-inverted form-field-checkbox-shape-square form-field-checkbox-layout-stack form-field-radio-type-icon form-field-radio-fill-solid form-field-radio-color-normal form-field-radio-shape-pill form-field-radio-layout-stack form-field-survey-fill-solid form-field-survey-color-normal form-field-survey-shape-pill form-field-hover-focus-outline form-submit-button-style-label tweak-global-animations-enabled tweak-global-animations-complexity-level-detailed tweak-global-animations-animation-style-fade tweak-global-animations-animation-type-fade tweak-global-animations-animation-curve-ease tweak-blog-masonry-width-full tweak-blog-masonry-text-alignment-left tweak-blog-masonry-primary-meta-categories tweak-blog-masonry-secondary-meta-date tweak-blog-masonry-meta-position-top tweak-blog-masonry-read-more-style-show tweak-blog-masonry-delimiter-space tweak-blog-masonry-image-placement-above tweak-blog-masonry-excerpt-show tweak-portfolio-grid-overlay-width-full tweak-portfolio-grid-overlay-height-large tweak-portfolio-grid-overlay-image-aspect-ratio-11-square tweak-portfolio-grid-overlay-text-placement-center tweak-portfolio-grid-overlay-show-text-after-hover tweak-blog-single-column-width-full tweak-blog-single-column-text-alignment-center tweak-blog-single-column-image-placement-above tweak-blog-single-column-delimiter-bullet tweak-blog-single-column-read-more-style-show tweak-blog-single-column-primary-meta-date tweak-blog-single-column-secondary-meta-categories tweak-blog-single-column-meta-position-top tweak-blog-single-column-content-title-only header-width-full tweak-transparent-header tweak-fixed-header tweak-fixed-header-style-scroll-back tweak-blog-item-width-wide tweak-blog-item-text-alignment-left tweak-blog-item-meta-position-above-title tweak-blog-item-delimiter-bullet tweak-blog-side-by-side-width-full tweak-blog-side-by-side-image-placement-left tweak-blog-side-by-side-image-aspect-ratio-11-square tweak-blog-side-by-side-primary-meta-categories tweak-blog-side-by-side-secondary-meta-date tweak-blog-side-by-side-meta-position-top tweak-blog-side-by-side-text-alignment-left tweak-blog-side-by-side-image-text-alignment-middle tweak-blog-side-by-side-read-more-style-show tweak-blog-side-by-side-delimiter-bullet tweak-blog-side-by-side-excerpt-show primary-button-style-solid primary-button-shape-square secondary-button-style-outline secondary-button-shape-square tertiary-button-style-outline tertiary-button-shape-underline tweak-events-stacked-width-full tweak-events-stacked-height-large tweak-events-stacked-show-thumbnails tweak-events-stacked-thumbnail-size-32-standard tweak-events-stacked-date-style-with-text tweak-events-stacked-show-time tweak-events-stacked-show-location tweak-events-stacked-show-excerpt tweak-blog-basic-grid-width-inset tweak-blog-basic-grid-image-aspect-ratio-32-standard tweak-blog-basic-grid-text-alignment-left tweak-blog-basic-grid-delimiter-bullet tweak-blog-basic-grid-image-placement-above tweak-blog-basic-grid-read-more-style-show tweak-blog-basic-grid-primary-meta-date tweak-blog-basic-grid-secondary-meta-categories tweak-blog-basic-grid-excerpt-show tweak-portfolio-grid-basic-width-full tweak-portfolio-grid-basic-height-small tweak-portfolio-grid-basic-image-aspect-ratio-11-square tweak-portfolio-grid-basic-text-alignment-left tweak-portfolio-grid-basic-hover-effect-zoom header-overlay-alignment-left tweak-portfolio-index-background-link-format-stacked tweak-portfolio-index-background-width-full tweak-portfolio-index-background-height-large tweak-portfolio-index-background-vertical-alignment-middle tweak-portfolio-index-background-horizontal-alignment-center tweak-portfolio-index-background-delimiter-none tweak-portfolio-index-background-animation-type-fade tweak-portfolio-index-background-animation-duration-medium tweak-portfolio-hover-follow-layout-inline tweak-portfolio-hover-follow-delimiter-bullet tweak-portfolio-hover-follow-animation-type-fade tweak-portfolio-hover-follow-animation-duration-fast tweak-portfolio-hover-static-layout-inline tweak-portfolio-hover-static-front tweak-portfolio-hover-static-delimiter-hyphen tweak-portfolio-hover-static-animation-type-fade tweak-portfolio-hover-static-animation-duration-fast hide-opentable-icons opentable-style-dark tweak-product-quick-view-button-style-floating tweak-product-quick-view-button-position-bottom tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light native-currency-code-eur collection-type-page collection-layout-default collection-687dea4deba7ec76c6c456cd mobile-style-available sqs-seven-one" id="collection-687dea4deba7ec76c6c456cd" tabindex="-1">
 <div class="clearfix site-wrapper" id="siteWrapper">
-
 <header class="header theme-col--primary" data-test="header" id="header">
 <div class="header-inner container header-layout-nav-right">
 <div class="header-title-nav-wrapper">
@@ -2288,7 +2345,6 @@ main#page { padding-top: 60px; }
   }
 
 </style><div class="fluid-engine fe-698c5b4a235f9c20aa8632b9"><div class="fe-block fe-block-a7c1c5920dd7e3724df8"><div class="sqs-block website-component-block sqs-block-website-component sqs-block-html html-block" data-block-css='["https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/98e2e8f9-67d5-4d6c-a400-ee02c06b1b00_617/website.components.html.styles.css"]' data-block-scripts='["https://definitions.sqspcdn.com/website-component-definition/static-assets/website.components.html/98e2e8f9-67d5-4d6c-a400-ee02c06b1b00_617/website.components.html.visitor.js"]' data-block-type="1337" data-definition-name="website.components.html" data-sqsp-block="text" data-website-component-id="a7c1c5920dd7e3724df8" id="block-a7c1c5920dd7e3724df8"><div class="sqs-block-content"><div class="sqs-text-block-container">
-
 <div class="sqs-html-content" data-sqsp-text-block-content=""><p class="" style="white-space:pre-wrap;"><span class="sqsrte-text-highlight" data-text-attribute-id="faf7af91-135b-4ca3-95c3-a81beae518be"><a href="photobook.html"><span class="sqsrte-text-color--accent">Previous Project</span></a></span></p></div>
 <style id="container-styles">#block-a7c1c5920dd7e3724df8 {
     
@@ -2366,8 +2422,24 @@ main#page { padding-top: 60px; }
 </section>
 </article>
 </main>
-
 </div>
 
+<script>
+// Drag-to-scroll for carousels
+document.querySelectorAll('.gallery-reel').forEach(function(el) {
+  var isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e) {
+    isDown = true; el.classList.add('active');
+    startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+  });
+  el.addEventListener('mouseleave', function() { isDown = false; el.classList.remove('active'); });
+  el.addEventListener('mouseup', function() { isDown = false; el.classList.remove('active'); });
+  el.addEventListener('mousemove', function(e) {
+    if (!isDown) return; e.preventDefault();
+    var x = e.pageX - el.offsetLeft;
+    el.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+});
+</script>
 </body>
 </html>
