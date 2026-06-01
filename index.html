@@ -72,7 +72,7 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 
 /* MAIN */
 main {
-  margin-top: var(--nav-h);
+  margin-top: 0;
 }
 
 /* HERO / TEXT SECTIONS */
@@ -123,13 +123,13 @@ main {
 /* HERO */
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
   background: #dde3f7;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0 2vw;
+  padding: var(--nav-h) 2vw 0;
 }
 .hero::before {
   content: '';
@@ -652,16 +652,19 @@ document.querySelectorAll('.gallery').forEach(function(el) {
     step();
   }
 
-  var header = document.querySelector('header');
-window.addEventListener('scroll', function() {
+});
+
+var header = document.querySelector('header');
+function updateHeader() {
   if (window.scrollY > 10) {
     header.classList.add('scrolled');
   } else {
     header.classList.remove('scrolled');
   }
-});
+}
+window.addEventListener('scroll', updateHeader);
+updateHeader();
 
-});
 </script>
 
 </body>

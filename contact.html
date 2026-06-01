@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact — Noa Aguilera</title>
-  <link rel="preconnect" href="https://images.squarespace-cdn.com">
   <style>
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -15,10 +14,7 @@
   --black: #1a1a1a;
   --gray: #888;
   --light: #f5f5f5;
-  --accent: #1a1a1a;
   --nav-h: 60px;
-  --max-w: 1400px;
-  --gap: 12px;
 }
 
 body {
@@ -45,14 +41,15 @@ header {
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 .site-title {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-decoration: none;
   color: var(--black);
 }
 nav a {
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
   color: var(--black);
   margin-left: 2rem;
@@ -60,155 +57,195 @@ nav a {
   opacity: 0.7;
   transition: opacity .2s;
 }
-nav a:hover, nav a.active { opacity: 1; }
+nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 
 /* MAIN */
 main {
   margin-top: var(--nav-h);
-}
-
-/* HERO / TEXT SECTIONS */
-.section-text {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 5vw 4vw;
-}
-.section-text h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-.section-text h2 {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
-}
-.section-text p {
-  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-  max-width: 70ch;
-  color: #444;
-  margin-bottom: 0.9rem;
-}
-.section-text .meta {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 0.5rem;
-}
-.section-text .next-link {
-  display: inline-block;
-  margin-top: 3rem;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 2px;
-}
-.section-text .next-link:hover { opacity: 0.6; }
-
-/* PROJECT TITLE LINK SECTION */
-.project-label {
-  padding: 3vw 4vw 1vw;
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.project-label h2 {
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.project-label a {
-  color: var(--black);
-  text-decoration: none;
-}
-.project-label a:hover { opacity: 0.6; }
-
-/* GALLERY GRID */
-.gallery {
+  min-height: calc(100vh - var(--nav-h));
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-  gap: var(--gap);
-  padding: 0 var(--gap) var(--gap);
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.gallery.gallery--wide {
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-}
-.gallery img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
-  background: var(--light);
+  grid-template-columns: 1fr 1fr;
 }
 
-/* CONTACT */
-.contact-wrap {
-  padding: 8vw 4vw;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+/* LEFT */
+.contact-left {
+  padding: 6vw 4vw;
+  display: flex;
+  align-items: flex-start;
 }
-.contact-wrap h1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+.contact-left h1 {
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* RIGHT */
+.contact-right {
+  padding: 6vw 4vw 6vw 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.4rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: 13px;
   font-weight: 700;
-  margin-bottom: 2rem;
+  letter-spacing: 0.02em;
 }
-.contact-wrap a {
-  display: inline-block;
-  font-size: 1.1rem;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.form-row .form-group {
+  min-width: 0;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13px;
   color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  margin: 0.5rem 1rem;
+  background: var(--light);
+  border: 1px solid #ccc;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
 }
-.contact-wrap a:hover { opacity: 0.5; }
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--black);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
 
-/* FOOTER */
-footer {
-  padding: 3rem 4vw;
-  text-align: center;
+.send-btn {
+  align-self: flex-start;
+  background: var(--gray);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 1.6rem;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.send-btn:hover {
+  background: var(--black);
+}
+.send-btn:disabled {
+  background: var(--gray);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.send-btn:not(:disabled) {
+  background: var(--black);
+}
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: #c00;
+}
+.field-error {
+  font-size: 12px;
+  color: #c00;
+  display: none;
+  margin-top: 3px;
+}
+.char-count {
   font-size: 12px;
   color: var(--gray);
-  letter-spacing: 0.05em;
+  text-align: right;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-  header { padding: 0 5vw; }
-  .gallery { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  .gallery img { aspect-ratio: 1/1; }
-  .section-text { padding: 8vw 5vw; }
+  main { grid-template-columns: 1fr; }
+  .contact-left { padding: 8vw 5vw 2vw; }
+  .contact-right { padding: 2vw 5vw 8vw; }
+  .form-row { grid-template-columns: 1fr; }
 }
-@media (max-width: 480px) {
-  .gallery { grid-template-columns: 1fr; }
-}
-</style>
+
+  </style>
 </head>
 <body>
 <header>
   <a class="site-title" href="index.html">Noa Aguilera</a>
   <nav>
-    <a href="index.html" class="active">Projects</a>
+    <a href="index.html">Projects</a>
     <a href="about.html">About me</a>
   </nav>
 </header>
 <main>
-<div class="contact-wrap">
-  <h1>Contact</h1>
-  <p>Get in touch for collaborations, commissions, or just to say hello.</p>
-  <a href="mailto:hola@bynoa.es">hola@bynoa.es</a>
-  <a href="https://www.instagram.com/bynoa.es" target="_blank" rel="noopener">Instagram</a>
-  <a href="https://www.linkedin.com/in/noaaguileradesign" target="_blank" rel="noopener">LinkedIn</a>
-</div>
+  <div class="contact-left">
+    <h1>Contact Me!</h1>
+  </div>
+  <div class="contact-right">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nombre">First Name</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label for="apellido">Last Name</label>
+        <input type="text" id="apellido" name="apellido" autocomplete="family-name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" autocomplete="email" placeholder=" ">
+      <span class="field-error" id="email-error">Please enter a valid e-mail address (e.g. name@domain.com)</span>
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title">
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" maxlength="2500"></textarea>
+      <span class="char-count" id="char-count">0 / 2500</span>
+    </div>
+    <button class="send-btn" type="button" id="send-btn" disabled>Send</button>
+  </div>
 </main>
-<footer>© Noa Aguilera</footer>
+<script>
+var fields = ['nombre', 'apellido', 'email', 'title', 'message'];
+var btn = document.getElementById('send-btn');
+var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+function checkAll() {
+  var allFilled = fields.every(function(id) {
+    return document.getElementById(id).value.trim() !== '';
+  });
+  var emailValid = emailRegex.test(document.getElementById('email').value);
+  btn.disabled = !(allFilled && emailValid);
+}
+fields.forEach(function(id) {
+  document.getElementById(id).addEventListener('input', checkAll);
+});
+
+document.getElementById('email').addEventListener('blur', function() {
+  var err = document.getElementById('email-error');
+  var val = this.value;
+  var valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
+  err.style.display = (val !== '' && !valid) ? 'block' : 'none';
+});
+
+document.getElementById('message').addEventListener('input', function() {
+  document.getElementById('char-count').textContent = this.value.length + ' / 2500';
+});
+
+</script>
 </body>
 </html>
