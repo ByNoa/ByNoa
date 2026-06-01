@@ -6,231 +6,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Magazine — Noa Aguilera</title>
   <link rel="preconnect" href="https://images.squarespace-cdn.com">
-  <style>
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --white: #ffffff;
-  --black: #1a1a1a;
-  --gray: #888;
-  --light: #f5f5f5;
-  --accent: #1a1a1a;
-  --nav-h: 60px;
-  --max-w: 1400px;
-  --gap: 12px;
+  <style>*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --white: #ffffff; --black: #1a1a1a; --gray: #888; --light: #f5f5f5; --nav-h: 60px; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--white); color: var(--black); font-size: 15px; line-height: 1.6; }
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2vw; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.site-title { font-size: 25px; font-weight: 700; letter-spacing: 0.02em; text-decoration: none; color: var(--black); }
+nav a { font-size: 15px; font-weight: 600; text-decoration: none; color: var(--black); margin-left: 2rem; letter-spacing: 0.05em; opacity: 0.7; transition: opacity .2s; }
+nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
+.s-title { padding: calc(var(--nav-h) + 4vw) 4vw 0; }
+.s-title h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: -0.05em; line-height: 1; }
+.s-desc { padding: 3vw 4vw 4vw; max-width: 900px; }
+.s-desc .meta { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.4rem; }
+.s-desc p { 
+  font-size: clamp(0.85rem, 1vw, 0.95rem); 
+  color: #333; 
+  line-height: 1.5; 
+  margin-top: 1.2rem; 
+  max-width: 72ch; 
 }
-
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: var(--white);
-  color: var(--black);
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* NAV */
-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2vw;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-.site-title {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--black);
-}
-nav a {
-  font-size: 13px;
-  text-decoration: none;
-  color: var(--black);
-  margin-left: 2rem;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
-  transition: opacity .2s;
-}
-nav a:hover, nav a.active { opacity: 1; }
-
-/* MAIN */
-main {
-  margin-top: var(--nav-h);
-}
-
-/* HERO / TEXT SECTIONS */
-.section-text {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 5vw 4vw;
-}
-.section-text h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-.section-text h2 {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
-}
-.section-text p {
-  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-  max-width: 70ch;
-  color: #444;
-  margin-bottom: 0.9rem;
-}
-.section-text .meta {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 0.5rem;
-}
-.section-text .next-link {
-  display: inline-block;
-  margin-top: 3rem;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 2px;
-}
-.section-text .next-link:hover { opacity: 0.6; }
-
-/* PROJECT TITLE LINK SECTION */
-.project-label {
-  padding: 3vw 4vw 1vw;
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.project-label h2 {
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.project-label a {
-  color: var(--black);
-  text-decoration: none;
-}
-.project-label a:hover { opacity: 0.6; }
-
-/* GALLERY GRID */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-  gap: var(--gap);
-  padding: 0 var(--gap) var(--gap);
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.gallery.gallery--wide {
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-}
-.gallery img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
-  background: var(--light);
-}
-
-/* CONTACT */
-.contact-wrap {
-  padding: 8vw 4vw;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-.contact-wrap h1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-.contact-wrap a {
-  display: inline-block;
-  font-size: 1.1rem;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  margin: 0.5rem 1rem;
-}
-.contact-wrap a:hover { opacity: 0.5; }
-
-/* FOOTER */
-footer {
-  padding: 3rem 4vw;
-  text-align: center;
-  font-size: 12px;
-  color: var(--gray);
-  letter-spacing: 0.05em;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  header { padding: 0 5vw; }
-  .gallery { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  .gallery img { aspect-ratio: 1/1; }
-  .section-text { padding: 8vw 5vw; }
-}
-@media (max-width: 480px) {
-  .gallery { grid-template-columns: 1fr; }
-}
-</style>
+.s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; background: var(--white); padding: 30px; }
+.s-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: zoom-in; }
+.s-catalogue { padding: 6vw 4vw; text-align: center; margin: 0 auto; }
+.s-catalogue h2 { font-size: clamp(1.8rem, 4vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; white-space: nowrap; }
+.s-catalogue p { font-size: clamp(0.85rem, 1vw, 0.95rem); color: #444; line-height: 1.35; margin-bottom: 2rem; max-width: 70ch; margin-left: auto; margin-right: auto; }
+.s-video { width: 100%; max-width: 900px; margin: 0 auto 2px; display: block; }
+.s-video video { width: 100%; display: block; }
+.s-nav { padding: 2.5rem 4vw; display: flex; justify-content: space-between; background: var(--white); border-top: 1px solid rgba(0,0,0,0.06); }
+.s-nav a { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: underline; text-underline-offset: 4px; }
+.s-nav a:hover { opacity: 0.5; }
+.contact-wrap { padding: 6vw 4vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.06); }
+.contact-wrap h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: 0.01em; }
+.contact-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; color: var(--black); text-decoration: none; border: 1px solid var(--black); padding: 0.7rem 1.6rem; transition: background 0.2s, color 0.2s, padding 0.2s; white-space: nowrap; }
+.contact-btn:hover { background: var(--black); color: var(--white); padding: 1.4rem 1.6rem; }
+#lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: zoom-out; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; aspect-ratio: unset; background: none; cursor: default; box-shadow: 0 8px 60px rgba(0,0,0,0.5); }
+@media (max-width: 768px) { header { padding: 0 5vw; } .s-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 15px; } }
+@media (max-width: 480px) { .s-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 <header>
   <a class="site-title" href="index.html">Noa Aguilera</a>
   <nav>
-    <a href="index.html" class="active">Projects</a>
+    <a href="index.html">Projects</a>
     <a href="about.html">About me</a>
   </nav>
 </header>
-<main>
-<section class="section-text">
-<h1>Magazine</h1>
-<p>Five Senses2019 - 2020</p>
-<p>Editorial Design</p>
-<p>Five Sensesis a magazine editorial design which talks about Bompass and Parr; Two designers well known for their unique, innovative and transgressive projects of food design, experimental design, sensitive design and sound design, among others. They are also known for organizing shows and events that revolve around their design projects in London. Each chapter of the magazine talks about different ways in which their designs work and they are accompanied by typographic editions, color and paper treatments that complement it.</p>
-<h2>Catalogue Automation</h2>
-<p>This project could look like a “magic trick” but it is catalogue automation. The working experience in this field allows to create magazines, catalogues, books and other editorial projects with multiple products, modules and automate them in seconds. This example is a Fashion & Cosmetics magazine for young adults. Check the video below to see the result.</p>
-<p>Previous Project</p>
-<a class="next-link" href="branding.html">Next: Branding →</a>
+
+<section class="s-title">
+  <h1>Magazine</h1>
 </section>
-<div class="gallery">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/71ddfed8-bc01-41a2-af1b-61cff97c9334/55ffe266063973.5b0970599acbb.jpg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3138a99f-4355-4492-a34e-9052c958333f/IMG_4899.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/7d61fdbc-c2d5-4194-baa9-ee3a30c5d661/IMG_4898.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/c84e9a2f-cc8f-44ba-84d4-5f960adb897f/IMG_4902.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/56c538b5-f6ac-463c-935e-7b7afc37c0d7/IMG_4904.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/c5256041-b49a-40af-98f9-24d6dedf83c6/IMG_4903.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9d46f742-daaa-4173-bbd8-f6452e757764/IMG_4905.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/df33e4a8-761e-4c25-9dfc-bbaf39a2331a/IMG_4908.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/132ca03f-7e0a-476f-a3c5-46d6f7c282a8/IMG_4906.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f64dcfa6-75a3-4ace-b927-82430a1c32e9/IMG_4909.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/87ee3931-0a56-4738-bc19-654b95c539fe/IMG_4910.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/ad1a6707-43e1-43af-bff1-a7bd60924370/IMG_4907.jpeg" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/0e3375bc-bf6b-4d6b-9b34-d4701ce8a845/mockup_2.png" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/95ca43df-60c6-48b7-a868-f1cd58a0225b/Catalogue.png" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/b6d93d27-e5cc-4c5f-99ee-3354b5e09ad7/Catalogue5.png" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/086af9ca-45f5-4662-91fc-bbc537ce463a/Catalogue2.png" loading="lazy" alt="Magazine">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3545cb7d-1745-4b41-9958-777c1d1c7836/mockup1.png" loading="lazy" alt="Magazine">
+<section class="s-desc">
+  <p class="meta"><strong>Five Senses</strong> &nbsp;·&nbsp; 2019 – 2020</p>
+  <p class="meta">Editorial Design</p>
+  <p><strong>Five Senses</strong> is a magazine editorial design which talks about Bompass and Parr — two designers well known for their unique, innovative and transgressive projects of food design, experimental design, sensitive design and sound design, among others. They are also known for organizing shows and events that revolve around their design projects in London. Each chapter of the magazine talks about different ways in which their designs work and they are accompanied by typographic editions, color and paper treatments that complement it.</p>
+</section>
+
+<section class="s-grid">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/71ddfed8-bc01-41a2-af1b-61cff97c9334/55ffe266063973.5b0970599acbb.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3138a99f-4355-4492-a34e-9052c958333f/IMG_4899.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/7d61fdbc-c2d5-4194-baa9-ee3a30c5d661/IMG_4898.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/c84e9a2f-cc8f-44ba-84d4-5f960adb897f/IMG_4902.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/56c538b5-f6ac-463c-935e-7b7afc37c0d7/IMG_4904.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/c5256041-b49a-40af-98f9-24d6dedf83c6/IMG_4903.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9d46f742-daaa-4173-bbd8-f6452e757764/IMG_4905.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/df33e4a8-761e-4c25-9dfc-bbaf39a2331a/IMG_4908.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/132ca03f-7e0a-476f-a3c5-46d6f7c282a8/IMG_4906.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f64dcfa6-75a3-4ace-b927-82430a1c32e9/IMG_4909.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/87ee3931-0a56-4738-bc19-654b95c539fe/IMG_4910.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/ad1a6707-43e1-43af-bff1-a7bd60924370/IMG_4907.jpeg" loading="lazy" alt="">
+</section>
+
+<div class="s-catalogue">
+  <h2>Catalogue Automation</h2>
+  <p><strong>This project could look like a "magic trick" but it is catalogue automation. The working experience in this field allows to create magazines, catalogues, books and other editorial projects with multiple products, modules and automate them in seconds. This example is a Fashion &amp; Cosmetics magazine for young adults. Check the video below to see the result.</strong></p>
 </div>
-</main>
-<footer>© Noa Aguilera</footer>
+
+<div class="s-video">
+  <video src="videos/magazine-catalogue.mp4" controls poster=""></video>
+</div>
+
+<section class="s-grid" style="margin-top: 2px;">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/0e3375bc-bf6b-4d6b-9b34-d4701ce8a845/mockup_2.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/95ca43df-60c6-48b7-a868-f1cd58a0225b/Catalogue.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/b6d93d27-e5cc-4c5f-99ee-3354b5e09ad7/Catalogue5.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/086af9ca-45f5-4662-91fc-bbc537ce463a/Catalogue2.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3545cb7d-1745-4b41-9958-777c1d1c7836/mockup1.png" loading="lazy" alt="">
+</section>
+
+<div class="s-nav">
+  <a href="soundcatcher.html">← Previous: Sound Catcher</a>
+  <a href="branding.html">Next: Branding →</a>
+</div>
+<section class="contact-wrap">
+  <h1>Noa's Portfolio</h1>
+  <a class="contact-btn" href="contact.html">Contact me!</a>
+</section>
+
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.s-grid img').forEach(function(img) {
+  img.addEventListener('click', function() {
+    lbImg.src = this.src;
+    lb.classList.add('open');
+  });
+});
+lb.addEventListener('click', function(e) {
+  if (e.target !== lbImg) lb.classList.remove('open');
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lb.classList.remove('open');
+});
+</script>
 </body>
 </html>
