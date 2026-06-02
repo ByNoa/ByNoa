@@ -7,237 +7,323 @@
   <title>Sound Catcher — Noa Aguilera</title>
   <link rel="preconnect" href="https://images.squarespace-cdn.com">
   <style>
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --white: #ffffff; --black: #1a1a1a; --gray: #888; --nav-h: 60px; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--white); color: var(--black); font-size: 15px; line-height: 1.6; }
 
-:root {
-  --white: #ffffff;
-  --black: #1a1a1a;
-  --gray: #888;
-  --light: #f5f5f5;
-  --accent: #1a1a1a;
-  --nav-h: 60px;
-  --max-w: 1400px;
-  --gap: 12px;
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2vw; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.site-title { font-size: 25px; font-weight: 700; letter-spacing: 0.02em; text-decoration: none; color: var(--black); }
+nav a { font-size: 15px; font-weight: 600; text-decoration: none; color: var(--black); margin-left: 2rem; letter-spacing: 0.05em; opacity: 0.7; transition: opacity .2s; }
+nav a:hover { opacity: 1; text-decoration: underline; }
+
+/* TITLE + DESC */
+.s-title { padding: calc(var(--nav-h) + 4vw) 4vw 0; }
+.s-title h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: -0.05em; line-height: 1; }
+.s-desc { padding: 3vw 4vw 4vw; max-width: 900px; }
+.s-desc .meta { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.4rem; }
+.s-desc p { font-size: clamp(0.85rem, 1vw, 0.95rem); color: #333; line-height: 1.5; margin-top: 1.2rem; max-width: 72ch; }
+
+/* TWO VIDEOS SIDE BY SIDE */
+.s-videos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vw;
+  padding: 0 4vw 4vw;
+  align-items: center;
+}
+.s-videos video {
+  width: 100%;
+  display: block;
 }
 
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: var(--white);
-  color: var(--black);
-  font-size: 15px;
-  line-height: 1.6;
+/* THREE-COLUMN TEXT */
+.s-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3vw;
+  padding: 5vw 4vw;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
+.s-three-col .col h2 { font-size: clamp(1rem, 1.5vw, 1.3rem); font-weight: 800; margin-bottom: 0.8rem; }
+.s-three-col .col p { font-size: clamp(0.82rem, 0.95vw, 0.92rem); color: #444; line-height: 1.7; }
 
-/* NAV */
-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: var(--nav-h);
+/* TEXT CAROUSEL */
+.s-carousel {
+  background: #f0ece6;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2vw;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  overflow: hidden;
+  min-height: 300px;
 }
-.site-title {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--black);
+.s-carousel::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  right: -100px;
+  bottom: -100px;
+  background-image: 
+    linear-gradient(45deg, rgba(160,160,210,0.5) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(160,160,210,0.5) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridDrift 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
 }
-nav a {
-  font-size: 13px;
-  text-decoration: none;
-  color: var(--black);
-  margin-left: 2rem;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
-  transition: opacity .2s;
+@keyframes gridDrift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
 }
-nav a:hover, nav a.active { opacity: 1; }
-
-/* MAIN */
-main {
-  margin-top: var(--nav-h);
-}
-
-/* HERO / TEXT SECTIONS */
-.section-text {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 5vw 4vw;
-}
-.section-text h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-.section-text h2 {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
-}
-.section-text p {
-  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-  max-width: 70ch;
-  color: #444;
-  margin-bottom: 0.9rem;
-}
-.section-text .meta {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 0.5rem;
-}
-.section-text .next-link {
-  display: inline-block;
-  margin-top: 3rem;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 2px;
-}
-.section-text .next-link:hover { opacity: 0.6; }
-
-/* PROJECT TITLE LINK SECTION */
-.project-label {
-  padding: 3vw 4vw 1vw;
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.project-label h2 {
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.project-label a {
-  color: var(--black);
-  text-decoration: none;
-}
-.project-label a:hover { opacity: 0.6; }
-
-/* GALLERY GRID */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-  gap: var(--gap);
-  padding: 0 var(--gap) var(--gap);
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.gallery.gallery--wide {
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-}
-.gallery img {
+.s-carousel-track {
+  display: flex;
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  display: block;
-  background: var(--light);
+  cursor: grab;
+  user-select: none;
+  position: relative;
+  z-index: 1;
 }
-
-/* CONTACT */
-.contact-wrap {
-  padding: 8vw 4vw;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
+.s-carousel-track.is-dragging { 
+  cursor: grabbing; 
 }
-.contact-wrap h1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 2rem;
+.s-carousel-slide {
+  flex: 0 0 100%;
+  padding: 8vw 12vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.2;
+  transition: opacity 0.5s ease;
 }
-.contact-wrap a {
-  display: inline-block;
-  font-size: 1.1rem;
+.s-carousel-slide.active {
+  opacity: 1;
+}
+.s-carousel-slide p {
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  margin: 0.5rem 1rem;
-}
-.contact-wrap a:hover { opacity: 0.5; }
-
-/* FOOTER */
-footer {
-  padding: 3rem 4vw;
   text-align: center;
-  font-size: 12px;
-  color: var(--gray);
-  letter-spacing: 0.05em;
+  pointer-events: none;
 }
+.s-carousel-btn {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.s-carousel-btn:hover { background: rgba(0,0,0,0.3); }
+.s-carousel-btn.prev { left: 2vw; }
+.s-carousel-btn.next { right: 2vw; }
 
-/* MOBILE */
+/* 3-COL GRID */
+.s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; background: var(--white); padding: 30px; margin-top: 4vw; }
+.s-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+
+/* NAV + FOOTER */
+.s-nav { padding: 2.5rem 4vw; display: flex; justify-content: space-between; background: var(--white); border-top: 1px solid rgba(0,0,0,0.06); }
+.s-nav a { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: underline; text-underline-offset: 4px; }
+.s-nav a:hover { opacity: 0.5; }
+.contact-wrap { padding: 6vw 4vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.06); }
+.contact-wrap h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: 0.01em; }
+.contact-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; color: var(--black); text-decoration: none; border: 1px solid var(--black); padding: 0.7rem 1.6rem; transition: background 0.2s, color 0.2s, padding 0.2s; white-space: nowrap; }
+.contact-btn:hover { background: var(--black); color: var(--white); padding: 1.4rem 1.6rem; }
+
+/* LIGHTBOX */
+#lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: zoom-out; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; aspect-ratio: unset; background: none; cursor: default; box-shadow: 0 8px 60px rgba(0,0,0,0.5); }
+
 @media (max-width: 768px) {
   header { padding: 0 5vw; }
-  .gallery { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  .gallery img { aspect-ratio: 1/1; }
-  .section-text { padding: 8vw 5vw; }
+  .s-videos { grid-template-columns: 1fr; }
+  .s-three-col { grid-template-columns: 1fr; }
+  .s-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 15px; }
+  .s-carousel-slide { width: 85vw; }
 }
 @media (max-width: 480px) {
-  .gallery { grid-template-columns: 1fr; }
+  .s-grid { grid-template-columns: 1fr; }
 }
-</style>
+  </style>
 </head>
 <body>
 <header>
   <a class="site-title" href="index.html">Noa Aguilera</a>
   <nav>
-    <a href="index.html" class="active">Projects</a>
+    <a href="index.html">Projects</a>
     <a href="about.html">About me</a>
   </nav>
 </header>
-<main>
-<section class="section-text">
-<h1>Sound Catcher</h1>
-<p class="meta">Sound Catcher2025 - 2026</p>
-<p>App Design UX/UI</p>
-<p>Sound Catcherturns everyday inspiration into music by listening to a song, analyzing it, and instantly creating a score for guitar, piano, or bass. It’s your personal ear-to-sheet-music assistant.</p>
-<h2>Problem</h2>
-<p>Access to musical sheets is often limited and restrictive. Many musicians struggle to find scores online for specific songs or independent artists. Musical sheets are often incomplete or unavailable in the web, making learning and playing music inaccessible.</p>
-<h2>Insight</h2>
-<p>Musicians learn by listening. Through capturing and analyzing sounds and songs around you, it becomes possible to turn listening into an active creative tool rather than a passive experience.</p>
-<h2>Solution</h2>
-<p>Sound Catcher is a mobile app that records and analyzes sounds around you (concerts, radio, TV or everyday surroundings) and transforms them into musical scores adapted to the user’s instrument and skill level. Users can create their personalized profiles, store their generated sheet music in a digital notebook, set their favorite artists and genres, and connect with other users.</p>
-<h2>Have you ever listened to a song and you could not find its score?</h2>
-<h2>Transcribe every sound you want now!</h2>
-<h2>The sounds you transcribe will be saved in your notebook</h2>
-<h2>Read them and play them when you want!</h2>
-<h2>Set your main instrument, your music taste and make musical friends</h2>
-<p>Previous Project</p>
-<a class="next-link" href="magazine.html">Next: Magazine →</a>
+
+<section class="s-title">
+  <h1>Sound Catcher</h1>
 </section>
-<div class="gallery">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f3ac3367-24a6-45c7-8af1-ddf1277c7172/AdobeStock_281790983+%281%29.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/07ffdcc4-e2eb-49c8-9ddf-83294237e4ee/Artboard3.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/21db9edf-67c0-48ca-9356-90caa4b41795/Artboard+1.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f648121b-1559-499f-8ea9-b0239d9c9a03/AdobeStock_632241050.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/a15613c9-4a59-4170-bee2-8eb0c9136a61/Artboard2.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/020a1542-1ce3-4285-9ed4-0a2286262ea5/SC7.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3d989793-1e2e-4532-85d0-bdb93e6307d9/SC9.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/ea4157d8-2b3f-422b-a280-ab4984b5fbff/SC5.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/7195f82a-15ab-42ce-831a-326ee72b2041/AdobeStock_1376384774.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/85c2d922-75f4-4680-919b-bbac45da96e2/AdobeStock_420941773_Editorial_Use_Only.jpg" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3b8d5631-b52c-4061-b47f-507ef19eb89d/SC11.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/bca85ae6-a73f-4e67-b747-98a31a8150a4/SC2.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/2c6489f3-3771-4aa1-8dc4-46a0563bd2f8/SC12.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/1478c3a6-f0e4-437e-bebe-553446cd5331/SC3.png" loading="lazy" alt="Sound Catcher">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/5c764135-95a6-43f2-86bc-cf30d45e69ba/SC13.png" loading="lazy" alt="Sound Catcher">
+<section class="s-desc">
+  <p class="meta">Sound Catcher &nbsp;·&nbsp; 2025 – 2026</p>
+  <p class="meta">App Design, UX/UI</p>
+  <p><strong>Sound Catcher</strong> turns everyday inspiration into music by listening to a song, analyzing it, and instantly creating a score for guitar, piano, or bass. It's your personal ear-to-sheet-music assistant.</p>
+</section>
+
+<!-- TWO VIDEOS SIDE BY SIDE -->
+<div class="s-videos">
+  <video src="videos/sound1.mp4" autoplay muted loop playsinline></video>
+  <video src="videos/sound2.mp4" autoplay muted loop playsinline></video>
 </div>
-</main>
-<footer>© Noa Aguilera</footer>
+
+<!-- THREE-COLUMN PROBLEM / INSIGHT / SOLUTION -->
+<div class="s-three-col">
+  <div class="col">
+    <h2>Problem</h2>
+    <p>Access to musical sheets is often limited and restrictive. Many musicians struggle to find scores online for specific songs or independent artists. Musical sheets are often incomplete or unavailable on the web, making learning and playing music inaccessible.</p>
+  </div>
+  <div class="col">
+    <h2>Insight</h2>
+    <p>Musicians learn by listening. Through capturing and analyzing sounds and songs around you, it becomes possible to turn listening into an active creative tool rather than a passive experience.</p>
+  </div>
+  <div class="col">
+    <h2>Solution</h2>
+    <p>Sound Catcher is a mobile app that records and analyzes sounds around you (concerts, radio, TV or everyday surroundings) and transforms them into musical scores adapted to the user's instrument and skill level. Users can create personalized profiles, store generated sheet music in a digital notebook, set favorite artists and genres, and connect with other users.</p>
+  </div>
+</div>
+
+<!-- TEXT CAROUSEL -->
+<div class="s-carousel">
+  <button class="s-carousel-btn prev" id="sc-prev">←</button>
+  <div class="s-carousel-track" id="sc-track">
+    <div class="s-carousel-slide"><p>Have you ever listened to a song and you could not find its score?</p></div>
+    <div class="s-carousel-slide"><p>Transcribe every sound you want now!</p></div>
+    <div class="s-carousel-slide"><p>The sounds you transcribe will be saved in your notebook</p></div>
+    <div class="s-carousel-slide"><p>Read them and play them when you want!</p></div>
+    <div class="s-carousel-slide"><p>Set your main instrument, your music taste and make musical friends</p></div>
+  </div>
+  <button class="s-carousel-btn next" id="sc-next">→</button>
+</div>
+
+<!-- 3-COL IMAGE GRID -->
+<section class="s-grid">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f3ac3367-24a6-45c7-8af1-ddf1277c7172/AdobeStock_281790983+%281%29.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/07ffdcc4-e2eb-49c8-9ddf-83294237e4ee/Artboard3.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/21db9edf-67c0-48ca-9356-90caa4b41795/Artboard+1.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f648121b-1559-499f-8ea9-b0239d9c9a03/AdobeStock_632241050.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/a15613c9-4a59-4170-bee2-8eb0c9136a61/Artboard2.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/020a1542-1ce3-4285-9ed4-0a2286262ea5/SC7.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3d989793-1e2e-4532-85d0-bdb93e6307d9/SC9.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/ea4157d8-2b3f-422b-a280-ab4984b5fbff/SC5.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/7195f82a-15ab-42ce-831a-326ee72b2041/AdobeStock_1376384774.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/85c2d922-75f4-4680-919b-bbac45da96e2/AdobeStock_420941773_Editorial_Use_Only.jpg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3b8d5631-b52c-4061-b47f-507ef19eb89d/SC11.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/bca85ae6-a73f-4e67-b747-98a31a8150a4/SC2.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/2c6489f3-3771-4aa1-8dc4-46a0563bd2f8/SC12.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/1478c3a6-f0e4-437e-bebe-553446cd5331/SC3.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/5c764135-95a6-43f2-86bc-cf30d45e69ba/SC13.png" loading="lazy" alt="">
+</section>
+
+<div class="s-nav">
+  <a href="brethpackaging.html">← Previous: Brēth Packaging</a>
+  <a href="magazine.html">Next: Magazine →</a>
+</div>
+<section class="contact-wrap">
+  <h1>Noa's Portfolio</h1>
+  <a class="contact-btn" href="contact.html">Contact me!</a>
+</section>
+
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.s-grid img').forEach(function(img) {
+  img.addEventListener('click', function() {
+    lbImg.src = this.src;
+    lb.classList.add('open');
+  });
+});
+lb.addEventListener('click', function(e) {
+  if (e.target !== lbImg) lb.classList.remove('open');
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lb.classList.remove('open');
+});
+
+var track = document.getElementById('sc-track');
+var slides = track.querySelectorAll('.s-carousel-slide');
+var current = 0;
+
+function goTo(n) {
+  current = (n + slides.length) % slides.length;
+  track.scrollTo({ left: current * track.offsetWidth, behavior: 'smooth' });
+}
+
+document.getElementById('sc-prev').addEventListener('click', function() { goTo(current - 1); });
+document.getElementById('sc-next').addEventListener('click', function() { goTo(current + 1); });
+
+// Drag to scroll
+var track = document.getElementById('sc-track');
+var slides = track.querySelectorAll('.s-carousel-slide');
+var current = 0;
+var total = slides.length;
+
+function goTo(n) {
+  current = ((n % total) + total) % total;
+  slides.forEach(function(s, i) {
+    s.style.transform = 'translateX(' + ((i - current) * 100) + '%)';
+  });
+  updateActive();
+}
+
+document.getElementById('sc-prev').addEventListener('click', function() { goTo(current - 1); });
+document.getElementById('sc-next').addEventListener('click', function() { goTo(current + 1); });
+
+var isDown = false, startX, moved, lastX = 0;
+track.addEventListener('mousedown', function(e) {
+  isDown = true; moved = false;
+  track.classList.add('is-dragging');
+  startX = e.pageX;
+});
+track.addEventListener('mouseleave', function() { isDown = false; track.classList.remove('is-dragging'); });
+track.addEventListener('mouseup', function() {
+  isDown = false;
+  track.classList.remove('is-dragging');
+  if (moved) goTo(current + (lastX < startX ? 1 : -1));
+});
+track.addEventListener('mousemove', function(e) {
+  if (!isDown) return;
+  e.preventDefault();
+  moved = true;
+  lastX = e.pageX;
+});
+
+function updateActive() {
+  slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
+}
+
+// init: stack all slides on top of each other, shift by index
+track.style.position = 'relative';
+slides.forEach(function(s, i) {
+  s.style.position = 'absolute';
+  s.style.top = '0';
+  s.style.left = '0';
+  s.style.width = '100%';
+  s.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+  s.style.transform = 'translateX(' + (i * 100) + '%)';
+});
+track.style.height = slides[0].offsetHeight + 'px';
+updateActive();
+
+</script>
 </body>
 </html>
