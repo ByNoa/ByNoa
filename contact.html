@@ -26,6 +26,7 @@ body {
 }
 
 /* NAV */
+header { transition: transform 0.3s ease; }
 header {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -172,13 +173,26 @@ main {
 
 /* MOBILE */
 @media (max-width: 768px) {
+  nav { display: none; }
+  .nav-burger { display: block; }
+  .site-title { white-space: nowrap; }
+  .contact-wrap { flex-direction: column !important; align-items: flex-start !important; gap: 1.2rem; padding: 8vw 6vw !important; }
+  .contact-wrap h1 { font-size: clamp(1.8rem, 8vw, 3rem) !important; }
+  .contact-btn { font-size: 0.85rem; padding: 0.6rem 1.2rem !important; }
   main { grid-template-columns: 1fr; }
   .contact-left { padding: 8vw 5vw 2vw; }
   .contact-right { padding: 2vw 5vw 8vw; }
   .form-row { grid-template-columns: 1fr; }
 }
 
-  </style>
+  
+/* MOBILE MENU */
+.nav-burger { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--black); line-height: 1; padding: 4px 8px; }
+.nav-mobile { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.06); z-index: 99; flex-direction: column; padding: 1rem 6vw 1.5rem; gap: 1rem; }
+.nav-mobile.open { display: flex; }
+.nav-mobile a { font-size: 18px; font-weight: 600; text-decoration: none; color: var(--black); opacity: 0.7; }
+.nav-mobile a:hover, .nav-mobile a.active { opacity: 1; text-decoration: underline; }
+</style>
 </head>
 <body>
 <header>
@@ -187,7 +201,12 @@ main {
     <a href="index.html">Projects</a>
     <a href="about.html">About me</a>
   </nav>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu">+</button>
 </header>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Projects</a>
+    <a href="about.html">About me</a>
+</div>
 <main>
   <div class="contact-left">
     <h1>Contact Me!</h1>
@@ -246,6 +265,45 @@ document.getElementById('message').addEventListener('input', function() {
   document.getElementById('char-count').textContent = this.value.length + ' / 2500';
 });
 
+var burger = document.getElementById('nav-burger');
+var mobileNav = document.getElementById('nav-mobile');
+burger.addEventListener('click', function() {
+  var open = mobileNav.classList.toggle('open');
+  burger.textContent = open ? '×' : '+';
+});
+
+var lastY = 0;
+var header = document.querySelector('header');
+window.addEventListener('scroll', function() {
+  var y = window.scrollY;
+  if (y > lastY && y > 80) {
+    header.style.transform = 'translateY(-100%)';
+  } else {
+    header.style.transform = 'translateY(0)';
+  }
+  lastY = y;
+});
+
+
+var _burger = document.getElementById('nav-burger');
+var _mobileNav = document.getElementById('nav-mobile');
+if (_burger && _mobileNav) {
+  _burger.addEventListener('click', function() {
+    var open = _mobileNav.classList.toggle('open');
+    _burger.textContent = open ? '×' : '+';
+  });
+}
+var _lastY = 0;
+var _hdr = document.querySelector('header');
+if (_hdr) {
+  _hdr.style.transition = 'transform 0.3s ease';
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY;
+    if (y > _lastY && y > 80) { _hdr.style.transform = 'translateY(-100%)'; }
+    else { _hdr.style.transform = 'translateY(0)'; }
+    _lastY = y;
+  });
+}
 </script>
 </body>
 </html>
