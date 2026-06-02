@@ -40,13 +40,7 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 .contact-wrap h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: 0.01em; }
 .contact-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; color: var(--black); text-decoration: none; border: 1px solid var(--black); padding: 0.7rem 1.6rem; transition: background 0.2s, color 0.2s, padding 0.2s; white-space: nowrap; }
 .contact-btn:hover { background: var(--black); color: var(--white); padding: 1.4rem 1.6rem; }
-@media (max-width: 768px) {
-  nav { display: none; }
-  .nav-burger { display: block; }
-  .site-title { white-space: nowrap; }
-  .contact-wrap { flex-direction: column !important; align-items: flex-start !important; gap: 1.2rem; padding: 8vw 6vw !important; }
-  .contact-wrap h1 { font-size: clamp(1.8rem, 8vw, 3rem) !important; }
-  .contact-btn { font-size: 0.85rem; padding: 0.6rem 1.2rem !important; } header { padding: 0 5vw; } .s-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { header { padding: 0 5vw; } .s-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px) { .s-grid { grid-template-columns: 1fr; } }
 #lightbox {
   display: none;
@@ -75,6 +69,14 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 .nav-mobile.open { display: flex; }
 .nav-mobile a { font-size: 18px; font-weight: 600; text-decoration: none; color: var(--black); opacity: 0.7; }
 .nav-mobile a:hover, .nav-mobile a.active { opacity: 1; text-decoration: underline; }
+@media (max-width: 768px) {
+  .site-title { white-space: nowrap; }
+  nav { display: none; }
+  .nav-burger { display: block; }
+  .contact-wrap { flex-direction: column !important; align-items: flex-start !important; gap: 1.2rem; padding: 8vw 6vw !important; }
+  .contact-wrap h1 { font-size: clamp(1.8rem, 8vw, 3rem) !important; }
+  .contact-btn { font-size: 0.85rem; padding: 0.6rem 1.2rem !important; }
+}
 </style>
 </head>
 <body>
@@ -165,7 +167,7 @@ if (_burger && _mobileNav) {
 var _lastY = 0;
 var _hdr = document.querySelector('header');
 if (_hdr) {
-  _hdr.style.transition = 'transform 0.3s ease';
+  _hdr.style.transition = (_hdr.style.transition || '') + ', transform 0.3s ease';
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
     if (y > _lastY && y > 80) { _hdr.style.transform = 'translateY(-100%)'; }
