@@ -7,244 +7,320 @@
   <title>Nawtilus — Noa Aguilera</title>
   <link rel="preconnect" href="https://images.squarespace-cdn.com">
   <style>
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --white: #ffffff; --black: #1a1a1a; --gray: #888; --nav-h: 60px; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: var(--white); color: var(--black); font-size: 15px; line-height: 1.6; }
 
-:root {
-  --white: #ffffff;
-  --black: #1a1a1a;
-  --gray: #888;
-  --light: #f5f5f5;
-  --accent: #1a1a1a;
-  --nav-h: 60px;
-  --max-w: 1400px;
-  --gap: 12px;
-}
+header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 2vw; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid rgba(0,0,0,0.06); }
+.site-title { font-size: 25px; font-weight: 700; letter-spacing: 0.02em; text-decoration: none; color: var(--black); }
+nav a { font-size: 15px; font-weight: 600; text-decoration: none; color: var(--black); margin-left: 2rem; letter-spacing: 0.05em; opacity: 0.7; transition: opacity .2s; }
+nav a:hover { opacity: 1; text-decoration: underline; }
 
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background: var(--white);
-  color: var(--black);
-  font-size: 15px;
-  line-height: 1.6;
-}
+/* TITLE */
+.s-title { padding: calc(var(--nav-h) + 4vw) 4vw 3vw; }
+.s-title h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: -0.05em; line-height: 1; }
 
-/* NAV */
-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  height: var(--nav-h);
-  display: flex;
+/* DARK HERO SECTION */
+.s-dark {
+  background: #0a0a0a;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2vw;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
-.site-title {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--black);
-}
-nav a {
-  font-size: 13px;
-  text-decoration: none;
-  color: var(--black);
-  margin-left: 2rem;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
-  transition: opacity .2s;
-}
-nav a:hover, nav a.active { opacity: 1; }
-
-/* MAIN */
-main {
-  margin-top: var(--nav-h);
+  padding: 0vw 4vw;
 }
 
-/* HERO / TEXT SECTIONS */
-.section-text {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 5vw 4vw;
+/* Animated bubbles */
+.s-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.15) 3px, transparent 3px),
+    radial-gradient(circle, rgba(255,255,255,0.08) 5px, transparent 5px),
+    radial-gradient(circle, rgba(255,255,255,0.05) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255,255,255,0.12) 4px, transparent 4px),
+    radial-gradient(circle, rgba(255,255,255,0.06) 6px, transparent 6px),
+    radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 120px 120px, 200px 180px, 90px 90px, 160px 200px, 300px 250px, 70px 70px;
+  background-position: 0 0, 60px 40px, 20px 80px, 100px 150px, 40px 200px, 80px 30px;
+  animation: bubbleDrift 20s linear infinite;
+  pointer-events: none;
 }
-.section-text h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
+@keyframes bubbleDrift {
+  0% { background-position: 0 0, 60px 40px, 20px 80px, 100px 150px, 40px 200px, 80px 30px; }
+  100% { background-position: 300px 0, 360px 40px, 320px 80px, 400px 150px, 340px 200px, 370px 30px; }
+}
+
+.s-dark-left {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding-right: 4vw;
+}
+.s-dark-left .meta {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.3rem;
+}
+.s-dark-left h2 {
+  font-size: clamp(0.85rem, 1vw, 1rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  color: rgba(255,255,255,0.9);
   margin-bottom: 1.5rem;
 }
-.section-text h2 {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+.s-dark-left p {
+  font-size: clamp(0.78rem, 0.9vw, 0.88rem);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.75;
+  max-width: 80ch;
 }
-.section-text p {
-  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
-  max-width: 70ch;
-  color: #444;
-  margin-bottom: 0.9rem;
-}
-.section-text .meta {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 0.5rem;
-}
-.section-text .next-link {
-  display: inline-block;
-  margin-top: 3rem;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 2px;
-}
-.section-text .next-link:hover { opacity: 0.6; }
+.s-dark-left p strong { color: var(--white); }
+.s-dark-left p u { text-decoration: underline; }
 
-/* PROJECT TITLE LINK SECTION */
-.project-label {
-  padding: 3vw 4vw 1vw;
-  max-width: var(--max-w);
-  margin: 0 auto;
+.s-dark-right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding-left: 4vw;
 }
-.project-label h2 {
-  font-size: clamp(1rem, 1.8vw, 1.5rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.project-label a {
-  color: var(--black);
-  text-decoration: none;
-}
-.project-label a:hover { opacity: 0.6; }
-
-/* GALLERY GRID */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
-  gap: var(--gap);
-  padding: 0 var(--gap) var(--gap);
-  max-width: var(--max-w);
-  margin: 0 auto;
-}
-.gallery.gallery--wide {
-  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-}
-.gallery img {
+.s-dark-right img {
   width: 100%;
-  aspect-ratio: 4/3;
+  max-width: 600px;
+  display: block;
+  filter: none;
+}
+.s-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+}
+.s-icon-item img {
+  width: clamp(60px, 8vw, 100px);
+  height: clamp(60px, 8vw, 100px);
+  object-fit: contain;
+  filter: invert(1);
+  display: block;
+}
+.s-icon-item .icon-title {
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.s-icon-item .icon-sub {
+  font-size: clamp(0.7rem, 0.85vw, 0.8rem);
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+/* PERFECTION SECTION — centered title + desc + video */
+.s-perfection {
+  padding: 6vw 4vw 3vw;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.s-perfection h2 {
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+.s-perfection p {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  color: #444;
+  line-height: 1.75;
+  max-width: 60ch;
+  margin: 0 auto 2rem;
+}
+.s-video { width: 100%; max-width: 1280px; margin: 0 auto; display: block; padding: 0 4vw; }
+.s-video video { width: 100%; display: block; }
+
+/* 3-COL GRID */
+.s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; background: var(--white); padding: 30px; margin-top: 2vw; }
+.s-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+
+/* DEVICE SECTION — title + desc centered, then two images side by edge */
+.s-device {
+  padding: 6vw 4vw 3vw;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.s-device h2 {
+  font-size: clamp(1.8rem, 4vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+}
+.s-device p {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  color: #444;
+  line-height: 1.75;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.s-device-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 3vw;
+}
+.s-device-images img {
+  width: 100%;
   object-fit: cover;
   display: block;
-  background: var(--light);
+  gap: 0;
+  margin-top: -1vw;
 }
 
-/* CONTACT */
-.contact-wrap {
-  padding: 8vw 4vw;
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: center;
-}
-.contact-wrap h1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-.contact-wrap a {
-  display: inline-block;
-  font-size: 1.1rem;
-  color: var(--black);
-  text-decoration: none;
-  border-bottom: 1px solid var(--black);
-  margin: 0.5rem 1rem;
-}
-.contact-wrap a:hover { opacity: 0.5; }
+/* NAV + FOOTER */
+.s-nav { padding: 2.5rem 4vw; display: flex; justify-content: space-between; background: var(--white); border-top: 1px solid rgba(0,0,0,0.06); }
+.s-nav a { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: underline; text-underline-offset: 4px; }
+.s-nav a:hover { opacity: 0.5; }
+.contact-wrap { padding: 6vw 4vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.06); }
+.contact-wrap h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: 0.01em; }
+.contact-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; color: var(--black); text-decoration: none; border: 1px solid var(--black); padding: 0.7rem 1.6rem; transition: background 0.2s, color 0.2s, padding 0.2s; white-space: nowrap; }
+.contact-btn:hover { background: var(--black); color: var(--white); padding: 1.4rem 1.6rem; }
 
-/* FOOTER */
-footer {
-  padding: 3rem 4vw;
-  text-align: center;
-  font-size: 12px;
-  color: var(--gray);
-  letter-spacing: 0.05em;
-}
+/* LIGHTBOX */
+#lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; aspect-ratio: unset; background: none; box-shadow: 0 8px 60px rgba(0,0,0,0.5); }
 
-/* MOBILE */
 @media (max-width: 768px) {
   header { padding: 0 5vw; }
-  .gallery { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-  .gallery img { aspect-ratio: 1/1; }
-  .section-text { padding: 8vw 5vw; }
+  .s-dark { grid-template-columns: 1fr; }
+  .s-dark-right { grid-template-columns: 1fr 1fr; margin-top: 3rem; }
+  .s-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 15px; }
+  .s-device-images { grid-template-columns: 1fr; }
+  .s-perfection h2, .s-device h2 { white-space: normal; }
 }
 @media (max-width: 480px) {
-  .gallery { grid-template-columns: 1fr; }
+  .s-grid { grid-template-columns: 1fr; }
 }
-</style>
+  </style>
 </head>
 <body>
 <header>
   <a class="site-title" href="index.html">Noa Aguilera</a>
   <nav>
-    <a href="index.html" class="active">Projects</a>
+    <a href="index.html">Projects</a>
     <a href="about.html">About me</a>
   </nav>
 </header>
-<main>
-<section class="section-text">
-<h1>Nawtilus</h1>
-<h2>PERFECTION IS A PROCESS</h2>
-<p>A controlled transformation ritual.</p>
-<p>Where beauty is engineered, studied, scanned, measured, applied and reborn.</p>
-<p>Previous Project</p>
-<a class="next-link" href="eliziafont.html">Next: Elizia Font →</a>
+
+<!-- TITLE -->
+<section class="s-title">
+  <h1>Nawtilus</h1>
 </section>
-<div class="gallery">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/636f6a17-0fb3-41ed-aefa-0e02e4f89a6b/pasos.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6347e8a3-0206-421a-8522-a5c867e56914/nowtilus3.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/03574ba1-a2df-4f86-a868-1f88709401ed/nowtilus5.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/7c08a868-078a-4747-9395-1aa683b54fed/nowtilus2.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/293ac3f7-cc46-4eb7-a800-c6919445c840/nowtilus6.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6795ac10-273d-43e0-97cb-0cd02817fa6a/nowtilus.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6445dbc7-f53d-4c95-a6c0-f7bcf6660618/mockup_packaging2.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/96cfd4a7-e270-49cd-b270-4636c5caf22f/mockup_app_1.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/4e7f0b96-d03b-4ac3-a96d-25709672828e/mockup_app_2.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/a983b67e-56cc-435f-b9d6-805931c1a5c6/nowtilus4.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6bf369bd-ccab-416c-8c0a-9382b14d1826/mockup_app_3.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/a4fc1039-6405-4f6e-94cc-3008a4a81c40/Screenshot+2026-02-11+at+20.30.40.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/fe127a2e-0c41-4414-866f-ba207376b745/fa91910b-c484-4002-8505-0f4805100410.jpeg" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/1e21ea1f-f3cf-4e10-ba9b-b5cc91382705/mockup_app_4.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9591c622-7999-4e07-8ec3-d0eb42a9cff2/mockup_app_5.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f915b182-d18a-460a-a4eb-1bad1c32f414/Screenshot+2026-02-11+at+20.31.22.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/fbf822f3-293e-4873-a48d-e3e2d37be5ce/Screenshot+2026-02-11+at+20.31.01.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/aa3a8bd7-a321-4d12-b134-e596775e99ef/6df9a6d1-83b7-47c6-9512-ff7e91960f94.jpeg" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/fcb557f4-aa72-4209-8b80-f578f9143855/46506bd2-126d-487e-af91-4990e1f3cf9f.jpeg" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/e8ccd26a-6f15-4e0b-986b-257cd65604c8/Screenshot+2026-02-11+at+20.31.46.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/21774cb1-d8e3-4a05-9be9-c3996c53b6f5/0df137f2-8631-4697-a6b0-57a362c37920.jpeg" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/0791540c-f23a-4d1c-8183-c2865c8018fb/Screenshot+2026-02-11+at+20.32.08.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/ce18d6bb-9b6c-4374-b305-645301197400/mockup_tarjetas_7.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6418cee2-7b4b-4c3f-8024-8e88ff4ab13b/e61480cd-5bc2-491a-b1f2-85b49d9e70af.jpeg" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/2654a819-2265-4f4e-a011-a44f5f2b8070/mockup_posters_4.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/e8d6de25-265e-4a1d-9ee0-456c3b1a205e/mockup_posters_1.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/951cb349-0def-4fae-8642-e0a4d938933b/mockup_posters_5.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/970693d4-a7d8-4241-8cf3-5e330b82527f/mockup_posters_6.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/4a2f71d6-0bae-4a16-a602-f83308fe2bd4/brandingnautilus.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/59df03dd-dd48-4afb-9f86-eef8aa5c6696/mockup_posters_3.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9a2f46cf-8857-4b97-8779-d8da73958aea/mockup_posters_2.png" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/135d0fd5-1334-4d17-a92b-2af377ba59d1/nawtilus-parts.jpg" loading="lazy" alt="Nawtilus">
-<img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9bfd0d54-ee91-46e4-b060-585f021d3acc/IMG_6256+2.JPG" loading="lazy" alt="Nawtilus">
+
+<!-- DARK HERO: description left, icons right, animated bubbles -->
+<section class="s-dark">
+  <div class="s-dark-left">
+    <p class="meta">Branding futuristic-dystopian &nbsp;·&nbsp; 2026</p>
+    <h2>Branding, Editorial, Packaging, Video, App</h2>
+    <p><strong><u>Nawtilus</u> is a speculative design project for skincare in a futuristic-dystopian context. It is inspired by the movie The Substance. Nawtilus begins with a facial scan with an app that translates the user's facial skin into data: imperfections, desires and vulnerabilities. Once this is done, the scan is sent to the company via app. The user is sent their personalized skin care treatment to their home. The experience begins with the application of the product on the user's neck using a physical device: a small applicator in the shape of a softened spiral—like nautilus sea shell. When activated, its circular light marks the beginning of the process. Once applied, the treatment responds by sealing the user in a temporary metallic shell, rendering them unable to move, speak or interact. During this state of isolation, the skin is inactive and protected from the exterior. After 24 hours, the shell fractures, allowing the body to emerge renewed and transformed. Nawtilus reframes skincare as a process of transformation, control and rebirth.</strong></p>
+  </div>
+  <div class="s-dark-right">
+    <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/636f6a17-0fb3-41ed-aefa-0e02e4f89a6b/pasos.png" alt="Steps">
+  </div>
+  </div>
+</section>
+
+<!-- PERFECTION SECTION -->
+<div class="s-perfection">
+  <h2>Perfection Is A Process</h2>
+  <p><strong>A controlled transformation ritual. Where beauty is engineered, studied, scanned, measured, applied and reborn.</strong></p>
 </div>
-</main>
-<footer>© Noa Aguilera</footer>
+<div class="s-video">
+  <video src="videos/nawtilus-ad.mp4" controls poster="images/nawtilus-poster.png"></video>
+</div>
+
+<!-- 3-COL GRID -->
+<section class="s-grid">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6347e8a3-0206-421a-8522-a5c867e56914/nowtilus3.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/03574ba1-a2df-4f86-a868-1f88709401ed/nowtilus5.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/7c08a868-078a-4747-9395-1aa683b54fed/nowtilus2.png" style="object-position: 50% 20%" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/293ac3f7-cc46-4eb7-a800-c6919445c840/nowtilus6.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6795ac10-273d-43e0-97cb-0cd02817fa6a/nowtilus.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6445dbc7-f53d-4c95-a6c0-f7bcf6660618/mockup_packaging2.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/96cfd4a7-e270-49cd-b270-4636c5caf22f/mockup_app_1.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/4e7f0b96-d03b-4ac3-a96d-25709672828e/mockup_app_2.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/a983b67e-56cc-435f-b9d6-805931c1a5c6/nowtilus4.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6bf369bd-ccab-416c-8c0a-9382b14d1826/mockup_app_3.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/a4fc1039-6405-4f6e-94cc-3008a4a81c40/Screenshot+2026-02-11+at+20.30.40.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/fe127a2e-0c41-4414-866f-ba207376b745/fa91910b-c484-4002-8505-0f4805100410.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/1e21ea1f-f3cf-4e10-ba9b-b5cc91382705/mockup_app_4.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9591c622-7999-4e07-8ec3-d0eb42a9cff2/mockup_app_5.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/f915b182-d18a-460a-a4eb-1bad1c32f414/Screenshot+2026-02-11+at+20.31.22.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/fbf822f3-293e-4873-a48d-e3e2d37be5ce/Screenshot+2026-02-11+at+20.31.01.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/aa3a8bd7-a321-4d12-b134-e596775e99ef/6df9a6d1-83b7-47c6-9512-ff7e91960f94.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/fcb557f4-aa72-4209-8b80-f578f9143855/46506bd2-126d-487e-af91-4990e1f3cf9f.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/e8ccd26a-6f15-4e0b-986b-257cd65604c8/Screenshot+2026-02-11+at+20.31.46.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/21774cb1-d8e3-4a05-9be9-c3996c53b6f5/0df137f2-8631-4697-a6b0-57a362c37920.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/0791540c-f23a-4d1c-8183-c2865c8018fb/Screenshot+2026-02-11+at+20.32.08.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/ce18d6bb-9b6c-4374-b305-645301197400/mockup_tarjetas_7.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/6418cee2-7b4b-4c3f-8024-8e88ff4ab13b/e61480cd-5bc2-491a-b1f2-85b49d9e70af.jpeg" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/2654a819-2265-4f4e-a011-a44f5f2b8070/mockup_posters_4.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/e8d6de25-265e-4a1d-9ee0-456c3b1a205e/mockup_posters_1.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/951cb349-0def-4fae-8642-e0a4d938933b/mockup_posters_5.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/970693d4-a7d8-4241-8cf3-5e330b82527f/mockup_posters_6.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/4a2f71d6-0bae-4a16-a602-f83308fe2bd4/brandingnautilus.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/59df03dd-dd48-4afb-9f86-eef8aa5c6696/mockup_posters_3.png" loading="lazy" alt="">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9a2f46cf-8857-4b97-8779-d8da73958aea/mockup_posters_2.png" loading="lazy" alt="">
+</section>
+
+<!-- DEVICE SECTION -->
+<div class="s-device">
+  <h2>Nawtilus Application Device</h2>
+  <p><strong>Precision in its purest form. Designed to deliver transformation with controlled pressure & calculated contact without leaving a trace in your skin. Engineered to initiate rebirth.</strong></p>
+</div>
+<div class="s-device-images">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/135d0fd5-1334-4d17-a92b-2af377ba59d1/nawtilus-parts.jpg" loading="lazy" alt="Nawtilus parts">
+  <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/9bfd0d54-ee91-46e4-b060-585f021d3acc/IMG_6256+2.JPG" loading="lazy" alt="Nawtilus device">
+</div>
+
+<div class="s-nav">
+  <a href="branding.html">← Previous: Branding</a>
+  <a href="eliziafont.html">Next: Elizia Font →</a>
+</div>
+<section class="contact-wrap">
+  <h1>Noa's Portfolio</h1>
+  <a class="contact-btn" href="contact.html">Contact me!</a>
+</section>
+
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.s-grid img, .s-device-images img').forEach(function(img) {
+  img.addEventListener('click', function() {
+    lbImg.src = this.src;
+    lb.classList.add('open');
+  });
+});
+lb.addEventListener('click', function(e) {
+  if (e.target !== lbImg) lb.classList.remove('open');
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lb.classList.remove('open');
+});
+</script>
 </body>
 </html>
