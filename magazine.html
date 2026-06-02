@@ -24,16 +24,48 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
   margin-top: 1.2rem; 
   max-width: 72ch; 
 }
-.s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; background: var(--white); padding: 30px; }
-.s-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; cursor: zoom-in; }
-.s-catalogue { padding: 6vw 4vw; text-align: center; margin: 0 auto; }
-.s-catalogue h2 { font-size: clamp(1.8rem, 4vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; white-space: nowrap; }
-.s-catalogue p { font-size: clamp(0.85rem, 1vw, 0.95rem); color: #444; line-height: 1.35; margin-bottom: 2rem; max-width: 70ch; margin-left: auto; margin-right: auto; }
-.s-video { width: 100%; max-width: 900px; margin: 0 auto 2px; display: block; }
+.s-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 50px; 
+  background: var(--white); 
+  padding: 30px; 
+}
+.s-grid img { 
+  width: 100%; 
+  aspect-ratio: 4/3; 
+  object-fit: cover; 
+  display: block; 
+}
+.s-catalogue { 
+  padding: 6vw 4vw; 
+  text-align: center; 
+  margin: 0 auto; 
+  margin-bottom: -5rem;
+}
+.s-catalogue h2 { 
+  font-size: clamp(1.8rem, 4vw, 4rem); 
+  font-weight: 800; 
+  letter-spacing: -0.03em; 
+  margin-bottom: 1rem; 
+  white-space: nowrap; 
+}
+.s-catalogue p { 
+  font-size: clamp(0.85rem, 1vw, 0.95rem); 
+  color: #444; 
+  line-height: 1.35; 
+  margin-bottom: 2rem; 
+  max-width: 70ch; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+.s-video { width: 100%; max-width: 1000px; margin: 0 auto 2px; display: block; }
 .s-video video { width: 100%; display: block; }
 .s-nav { padding: 2.5rem 4vw; display: flex; justify-content: space-between; background: var(--white); border-top: 1px solid rgba(0,0,0,0.06); }
 .s-nav a { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: underline; text-underline-offset: 4px; }
 .s-nav a:hover { opacity: 0.5; }
+.s-row5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 5rem; }
+.s-row5 img { width: 100%; aspect-ratio: 9/16; object-fit: cover; display: block; }
 .contact-wrap { padding: 6vw 4vw; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.06); }
 .contact-wrap h1 { font-size: clamp(1.8rem, 4vw, 5rem); font-weight: 750; letter-spacing: 0.01em; }
 .contact-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.05em; color: var(--black); text-decoration: none; border: 1px solid var(--black); padding: 0.7rem 1.6rem; transition: background 0.2s, color 0.2s, padding 0.2s; white-space: nowrap; }
@@ -84,16 +116,16 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 </div>
 
 <div class="s-video">
-  <video src="videos/magazine-catalogue.mp4" controls poster=""></video>
+  <video src="videos/catalogue.mp4" controls poster=""></video>
 </div>
 
-<section class="s-grid" style="margin-top: 2px;">
+<div class="s-row5">
   <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/0e3375bc-bf6b-4d6b-9b34-d4701ce8a845/mockup_2.png" loading="lazy" alt="">
   <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/95ca43df-60c6-48b7-a868-f1cd58a0225b/Catalogue.png" loading="lazy" alt="">
   <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/b6d93d27-e5cc-4c5f-99ee-3354b5e09ad7/Catalogue5.png" loading="lazy" alt="">
   <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/086af9ca-45f5-4662-91fc-bbc537ce463a/Catalogue2.png" loading="lazy" alt="">
   <img src="https://images.squarespace-cdn.com/content/v1/687dea4beba7ec76c6c45445/3545cb7d-1745-4b41-9958-777c1d1c7836/mockup1.png" loading="lazy" alt="">
-</section>
+</div>
 
 <div class="s-nav">
   <a href="soundcatcher.html">← Previous: Sound Catcher</a>
@@ -110,7 +142,7 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 <script>
 var lb = document.getElementById('lightbox');
 var lbImg = document.getElementById('lightbox-img');
-document.querySelectorAll('.s-grid img').forEach(function(img) {
+document.querySelectorAll('.s-grid img, .s-row5 img').forEach(function(img) {
   img.addEventListener('click', function() {
     lbImg.src = this.src;
     lb.classList.add('open');
