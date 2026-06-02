@@ -280,6 +280,10 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
 @media (max-width: 480px) {
   .s-grid { grid-template-columns: 1fr; }
 }
+#lightbox { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: zoom-out; }
+#lightbox.open { display: flex; }
+#lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; aspect-ratio: unset; background: none; cursor: default; box-shadow: 0 8px 60px rgba(0,0,0,0.5); }
+
   </style>
 </head>
 <body>
@@ -368,6 +372,24 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
   <h1>Noa's Portfolio</h1>
   <a class="contact-btn" href="contact.html">Contact me!</a>
 </section>
-
+<div id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.s-grid img').forEach(function(img) {
+  img.addEventListener('click', function() {
+    lbImg.src = this.src;
+    lb.classList.add('open');
+  });
+});
+lb.addEventListener('click', function(e) {
+  if (e.target !== lbImg) lb.classList.remove('open');
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lb.classList.remove('open');
+});
+</script>
 </body>
 </html>
