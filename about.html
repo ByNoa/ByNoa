@@ -167,37 +167,32 @@ window.addEventListener('scroll', function() {
   lastY = y;
 });
 
+
+
 (function() {
   var burger = document.getElementById('nav-burger');
   var mobileNav = document.getElementById('nav-mobile');
   var hdr = document.querySelector('header');
-
+  if (hdr) hdr.style.transition = 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, transform 0.3s ease';
   if (burger && mobileNav) {
     burger.addEventListener('click', function() {
       var open = mobileNav.classList.toggle('open');
       burger.textContent = open ? '×' : '+';
     });
   }
-
-  // Close dropdown on scroll
+  var lastY2 = 0;
   window.addEventListener('scroll', function() {
+    var y = window.scrollY;
     if (mobileNav && mobileNav.classList.contains('open')) {
       mobileNav.classList.remove('open');
       if (burger) burger.textContent = '+';
     }
-  });
-
-  // Hide/show header on scroll
-  if (hdr) {
-    hdr.style.transition = (hdr.style.transition ? hdr.style.transition + ', ' : '') + 'transform 0.3s ease';
-    var lastY = 0;
-    window.addEventListener('scroll', function() {
-      var y = window.scrollY;
-      if (y > lastY && y > 80) { hdr.style.transform = 'translateY(-100%)'; }
+    if (hdr) {
+      if (y > lastY2 && y > 80) { hdr.style.transform = 'translateY(-100%)'; }
       else { hdr.style.transform = 'translateY(0)'; }
-      lastY = y;
-    });
-  }
+    }
+    lastY2 = y;
+  });
 })();
 </script>
 </body>

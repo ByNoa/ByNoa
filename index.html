@@ -686,39 +686,32 @@ window.addEventListener('scroll', function() {
 });
 
 
+
+
 (function() {
   var burger = document.getElementById('nav-burger');
   var mobileNav = document.getElementById('nav-mobile');
   var hdr = document.querySelector('header');
-
+  if (hdr) hdr.style.transition = 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, transform 0.3s ease';
   if (burger && mobileNav) {
     burger.addEventListener('click', function() {
       var open = mobileNav.classList.toggle('open');
       burger.textContent = open ? '×' : '+';
     });
   }
-
-  // Close dropdown on scroll + handle transparent header + hide/show
-  var lastY = 0;
+  var lastY2 = 0;
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
-
-    // Close mobile nav
     if (mobileNav && mobileNav.classList.contains('open')) {
       mobileNav.classList.remove('open');
       if (burger) burger.textContent = '+';
     }
-
-    // Transparent -> white
     if (hdr) {
-      if (y > 10) { hdr.classList.add('scrolled'); }
-      else { hdr.classList.remove('scrolled'); }
-
-      // Hide/show
-      if (y > lastY && y > 80) { hdr.style.transform = 'translateY(-100%)'; }
+      if (y > 10) { hdr.classList.add('scrolled'); } else { hdr.classList.remove('scrolled'); }
+      if (y > lastY2 && y > 80) { hdr.style.transform = 'translateY(-100%)'; }
       else { hdr.style.transform = 'translateY(0)'; }
     }
-    lastY = y;
+    lastY2 = y;
   });
 })();
 </script>
