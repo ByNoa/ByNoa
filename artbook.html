@@ -55,7 +55,7 @@ nav a:hover, nav a.active { opacity: 1; text-decoration: underline; }
   grid-template-columns: repeat(3, 1fr); 
   gap: 10px; 
   background: #e8e8e8; 
-  padding: 2px; 
+  padding: 0px; 
 }
 .s-grid img { 
   width: 100%; 
@@ -171,12 +171,7 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') lb.classList.remove('open');
 });
 
-var burger = document.getElementById('nav-burger');
-var mobileNav = document.getElementById('nav-mobile');
-burger.addEventListener('click', function() {
-  var open = mobileNav.classList.toggle('open');
-  burger.textContent = open ? '×' : '+';
-});
+
 
 var lastY = 0;
 var header = document.querySelector('header');
@@ -191,25 +186,38 @@ window.addEventListener('scroll', function() {
 });
 
 
-var _burger = document.getElementById('nav-burger');
-var _mobileNav = document.getElementById('nav-mobile');
-if (_burger && _mobileNav) {
-  _burger.addEventListener('click', function() {
-    var open = _mobileNav.classList.toggle('open');
-    _burger.textContent = open ? '×' : '+';
-  });
-}
-var _lastY = 0;
-var _hdr = document.querySelector('header');
-if (_hdr) {
-  _hdr.style.transition = (_hdr.style.transition || '') + ', transform 0.3s ease';
+(function() {
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('nav-mobile');
+  var hdr = document.querySelector('header');
+
+  if (burger && mobileNav) {
+    burger.addEventListener('click', function() {
+      var open = mobileNav.classList.toggle('open');
+      burger.textContent = open ? '×' : '+';
+    });
+  }
+
+  // Close dropdown on scroll
   window.addEventListener('scroll', function() {
-    var y = window.scrollY;
-    if (y > _lastY && y > 80) { _hdr.style.transform = 'translateY(-100%)'; }
-    else { _hdr.style.transform = 'translateY(0)'; }
-    _lastY = y;
+    if (mobileNav && mobileNav.classList.contains('open')) {
+      mobileNav.classList.remove('open');
+      if (burger) burger.textContent = '+';
+    }
   });
-}
+
+  // Hide/show header on scroll
+  if (hdr) {
+    hdr.style.transition = (hdr.style.transition ? hdr.style.transition + ', ' : '') + 'transform 0.3s ease';
+    var lastY = 0;
+    window.addEventListener('scroll', function() {
+      var y = window.scrollY;
+      if (y > lastY && y > 80) { hdr.style.transform = 'translateY(-100%)'; }
+      else { hdr.style.transform = 'translateY(0)'; }
+      lastY = y;
+    });
+  }
+})();
 </script>
 </body>
 </html>

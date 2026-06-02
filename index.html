@@ -672,12 +672,7 @@ document.querySelectorAll('.gallery').forEach(function(el) {
 
 });
 
-var burger = document.getElementById('nav-burger');
-var mobileNav = document.getElementById('nav-mobile');
-burger.addEventListener('click', function() {
-  var open = mobileNav.classList.toggle('open');
-  burger.textContent = open ? '×' : '+';
-});
+
 
 var lastY = 0;
 window.addEventListener('scroll', function() {
@@ -691,29 +686,41 @@ window.addEventListener('scroll', function() {
 });
 
 
-var _burger = document.getElementById('nav-burger');
-var _mobileNav = document.getElementById('nav-mobile');
-if (_burger && _mobileNav) {
-  _burger.addEventListener('click', function() {
-    var open = _mobileNav.classList.toggle('open');
-    _burger.textContent = open ? '×' : '+';
-  });
-}
-var _lastY = 0;
-var _hdr = document.querySelector('header');
-if (_hdr) {
-  _hdr.style.transition = 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease, transform 0.3s ease';
+(function() {
+  var burger = document.getElementById('nav-burger');
+  var mobileNav = document.getElementById('nav-mobile');
+  var hdr = document.querySelector('header');
+
+  if (burger && mobileNav) {
+    burger.addEventListener('click', function() {
+      var open = mobileNav.classList.toggle('open');
+      burger.textContent = open ? '×' : '+';
+    });
+  }
+
+  // Close dropdown on scroll + handle transparent header + hide/show
+  var lastY = 0;
   window.addEventListener('scroll', function() {
     var y = window.scrollY;
-    // scrolled class for transparent->white
-    if (y > 10) { _hdr.classList.add('scrolled'); }
-    else { _hdr.classList.remove('scrolled'); }
-    // hide on scroll down, show on scroll up
-    if (y > _lastY && y > 80) { _hdr.style.transform = 'translateY(-100%)'; }
-    else { _hdr.style.transform = 'translateY(0)'; }
-    _lastY = y;
+
+    // Close mobile nav
+    if (mobileNav && mobileNav.classList.contains('open')) {
+      mobileNav.classList.remove('open');
+      if (burger) burger.textContent = '+';
+    }
+
+    // Transparent -> white
+    if (hdr) {
+      if (y > 10) { hdr.classList.add('scrolled'); }
+      else { hdr.classList.remove('scrolled'); }
+
+      // Hide/show
+      if (y > lastY && y > 80) { hdr.style.transform = 'translateY(-100%)'; }
+      else { hdr.style.transform = 'translateY(0)'; }
+    }
+    lastY = y;
   });
-}
+})();
 </script>
 
 </body>
